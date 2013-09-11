@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>NGramTypeSystem</name>
+    <description>Type System descriptor defined for the NGramAnnotation Step.</description>
+    <version>1.0</version>
+    <vendor>Carnegie Mellon University</vendor>
+  <imports>
+    <import location="BaseTypeSystem.xml"/>
+  </imports>
+  <types>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.Unigram</name>
+      <description>Unigram type takes a single token in a question/answer.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.BaseAnnotation</supertypeName>
+    <features>
+        <featureDescription>
+          <name>unigramString</name>
+          <description>unigram token string at the specified index set (beginInd,endInd).</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.Bigram</name>
+      <description>Bigram type takes two consecutive tokens in a question/answer.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.BaseAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>bigramString</name>
+          <description>bigram token string at the specified index set (beginInd,endInd).</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.Trigram</name>
+      <description>Trigram type takes three consecutive tokens in a question/answer.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.BaseAnnotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>trigramString</name>
+          <description>trigram token string at the specified index set (beginInd,endInd).</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.UnigramAnswer</name>
+      <description>the unigrams of answer sentence.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Answer</supertypeName>
+      <features>
+      	<featureDescription>
+          <name>answerUnigrams</name>
+          <description>array of unigrams for an answer sentence.</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.BigramAnswer</name>
+      <description>the bigrams of answer sentence.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Answer</supertypeName>
+      <features>
+      	<featureDescription>
+          <name>answerBigrams</name>
+          <description>array of bigrams for an answer sentence.</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.TrigramAnswer</name>
+      <description>the trigrams of answer sentence.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Answer</supertypeName>
+      <features>
+      	<featureDescription>
+          <name>answerTrigrams</name>
+          <description>array of trigrams for an answer sentence.</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.UnigramQuestion</name>
+      <description>unigrams of the question sentence.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Question</supertypeName>
+      <features>
+      	<featureDescription>
+          <name>questionUnigrams</name>
+          <description>array of unigrams for a question sentence.</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>unigramAnswerList</name>
+          <description>Contains a list of UnigramAnswer type objects. The FSList super type is used to maintain the order of the UnigramAnswer. This order can be used for the Evaluation phase where we will compare the UnigramAnswer:isCorrect with  empirical result or we can use the UnigramAnswer:id attribute to match. Later method requires O(n) worst case time to get the answer for a given UnigramAnswer:id.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.nlp.UnigramAnswer</elementType>
+        </featureDescription>
+        </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.BigramQuestion</name>
+      <description>unigrams of the question sentence.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Question</supertypeName>
+      <features>
+      	<featureDescription>
+          <name>questionBigrams</name>
+          <description>array of bigrams for a question sentence.</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>bigramAnswerList</name>
+          <description>Contains a list of BigramAnswer type objects. The FSList super type is used to maintain the order of the BigramAnswer. This order can be used for the Evaluation phase where we will compare the BigramAnswer:isCorrect with  empirical result or we can use the BigramAnswer:id attribute to match. Later method requires O(n) worst case time to get the answer for a given BigramAnswer:id.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.nlp.UnigramAnswer</elementType>
+        </featureDescription>
+        </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.TrigramQuestion</name>
+      <description>unigrams of the question sentence.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Question</supertypeName>
+      <features>
+      	<featureDescription>
+          <name>questionTrigrams</name>
+          <description>array of trigrams for a question sentence.</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>trigramAnswerList</name>
+          <description>Contains a list of TrigramAnswer type objects. The FSList super type is used to maintain the order of the TrigramAnswer. This order can be used for the Evaluation phase where we will compare the TrigramAnswer:isCorrect with  empirical result or we can use the TrigramAnswer:id attribute to match. Later method requires O(n) worst case time to get the answer for a given TrigramAnswer:id.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.nlp.TrigramAnswer</elementType>
+        </featureDescription>
+        </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.UnigramQAEntityList</name>
+      <description>a list of Unigram Question Answers.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>unigramQuestions</name>
+          <description>a list of UnigramQuestion objects. Note that each UnigramQuestion object has zero or more UnigramAnswer objects.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.nlp.UnigramQuestion</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.BigramQAEntityList</name>
+      <description>a list of Bigram Question Answers.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>bigramQuestions</name>
+          <description>a list of BigramQuestion objects. Note that each BigramQuestion object has zero or more BigramAnswer objects.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.nlp.BigramQuestion</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.nlp.TrigramQAEntityList</name>
+      <description>a list of Trigram Question Answers.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>trigramQuestions</name>
+          <description>a list of TrigramQuestion objects. Note that each TrigramQuestion object has zero or more TrigramAnswer objects.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.nlp.TrigramQuestion</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

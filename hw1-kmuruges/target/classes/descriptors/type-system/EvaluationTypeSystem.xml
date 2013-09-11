@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>EvaluationTypeSystem.xml</name>
+    <description>Type System descriptor defined for the Evaluation Step.</description>
+    <version>1.0</version>
+    <vendor>Carnegie Mellon University</vendor>
+  <imports>
+    <import location="BaseTypeSystem.xml"/>
+  </imports>
+  <types>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.result.EvaluatedQuestion</name>
+      <description>question with the sorted answer list based on the score.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Question</supertypeName>
+      <features>
+        <featureDescription>
+          <name>sortedAnswerList</name>
+          <description>sorted list of answers for the current question.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.domain.Answer</elementType>
+        </featureDescription>
+      <featureDescription>
+          <name>scoreMetrics</name>
+          <description>ScoreMetrics for the current system.</description>
+          <rangeTypeName>edu.cmu.lti.deiis.hw1.type.result.ScoreMetrics</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.result.QAResults</name>
+      <description>list of evaluated questions for the output display.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>evaluatedQuestions</name>
+          <description>list of evaluated questions.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.result.EvaluatedQuestion</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.result.ScoreMetrics</name>
+      <description>Score metrics for the current system.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>precisionAtN</name>
+          <description>the precision at N where N is the total number of correct answers.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      <featureDescription>
+          <name>meanAvgPrecision</name>
+          <description>Mean Average Precision (MAP) score for the current question.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

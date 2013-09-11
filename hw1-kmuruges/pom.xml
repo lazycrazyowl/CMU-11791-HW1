@@ -4,6 +4,12 @@
   <groupId>edu.cmu.lti.11791.f13.hw1</groupId>
   <artifactId>hw1-kmuruges</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <name>11-791-Fall2013-HW1</name>
+	
+	<scm>
+		<connection>scm:git:git@github.com:keerthi166/CMU-11791-HW1.git</connection>
+		<developerConnection>scm:git:git@github.com:keerthi166/CMU-11791-HW1.git</developerConnection>
+	</scm>
   <repositories>
     <repository>
       <id>oaqa</id>

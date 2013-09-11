@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>BaseTypeSystemDescriptor</name>
+    <description>Contains the Base Types for the entire pipeline: Question, Answer, etc.  The reason for separate file helps in sharing this base type system with other type system.</description>
+    <version>1.0</version>
+    <vendor>Carnegie Mellon University</vendor>
+   <imports>
+    <import location="../annotator/BaseAnnotation.xml"/>
+   </imports>
+   <types>
+	  <typeDescription>
+	      <name>edu.cmu.lti.deiis.hw1.type.domain.Question</name>
+	      <description>Question type that contains the actual question sentence. This is one of the basic types in this pipeline.</description>
+	      <supertypeName>edu.cmu.lti.deiis.hw1.type.BaseAnnotation</supertypeName>
+	      <features>
+	      	<featureDescription>
+	          <name>id</name>
+	          <description>Identifier that uniquely identifies a Question in a pool of Questions</description>
+	          <rangeTypeName>uima.cas.Long</rangeTypeName>
+	        </featureDescription>
+	        <featureDescription>
+	          <name>questionString</name>
+	          <description>Contains the actual question sentence.</description>
+	          <rangeTypeName>uima.cas.String</rangeTypeName>
+	        </featureDescription>
+	        <featureDescription>
+	          <name>candidateAnswerList</name>
+	          <description>Contains a list of CandidateAnswer type objects. The FSList super type is used to maintain the order of the CandidateAnswers. This order can be used for the Evaluation phase where we will compare the CandidateAnswer:isCorrect with  empirical result or we can use the CandidateAnswer:id attribute to match. Later method requires O(n) worst case time to get the answer for a given CandidateAnswer:id.</description>
+	          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+	          <elementType>edu.cmu.lti.deiis.hw1.type.Answer</elementType>
+	        </featureDescription>
+	        </features>
+	    </typeDescription>
+	    <typeDescription>
+	      <name>edu.cmu.lti.deiis.hw1.type.domain.Answer</name>
+	      <description>Answer type that contains the actual answer sentence. This is one of the basic types in this pipeline.</description>
+	      <supertypeName>edu.cmu.lti.deiis.hw1.type.BaseAnnotation</supertypeName>
+	      <features>
+	      	<featureDescription>
+	          <name>id</name>
+	          <description>Identifier that uniquely identifies a CandidateAnswer for a question.</description>
+	          <rangeTypeName>uima.cas.Long</rangeTypeName>
+	        </featureDescription>
+	        <featureDescription>
+	          <name>isCorrect</name>
+	          <description>Flag variable to store whether the CandidateAnswer is correct or not.</description>
+	          <rangeTypeName>uima.cas.Boolean</rangeTypeName>
+	        </featureDescription>
+	        <featureDescription>
+	          <name>answerString</name>
+	          <description>Contains the actual answer sentence.</description>
+	          <rangeTypeName>uima.cas.String</rangeTypeName>
+	        </featureDescription>
+	      </features>
+	    </typeDescription>
+    </types>
+  </typeSystemDescription>

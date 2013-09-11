@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>ScoringTypeSystem</name>
+    <description>Type System descriptor defined for the Answer Scoring Step.</description>
+    <version>1.0</version>
+    <vendor>Carnegie Mellon University</vendor>
+  <imports>
+    <import location="BaseTypeSystem.xml"/>
+  </imports>
+  <types>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.model.ScoredAnswer</name>
+      <description>scored answer by the pipeline.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Answer</supertypeName>
+      <features>
+        <featureDescription>
+          <name>score</name>
+          <description>score of the answer</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.model.ScoredQuestion</name>
+      <description>score the current question. This is a function of the score assigned to each answer (ScoredAnswer). This measure will be used in Evaluation phase.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Question</supertypeName>
+      <features>
+        <featureDescription>
+          <name>score</name>
+          <description>score function over the ScoredAnswer. Optional feature. We could delete this feature if we can compute this score on the fly.</description>
+          <rangeTypeName>uima.cas.Double</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>scoredAnswerList</name>
+          <description>list of score answers for the current question.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.model.ScoredAnswer</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.model.ScoredQAEntityList</name>
+      <description>list of scored questions for the evaluation phase.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>scoredQuestions</name>
+          <description>list of scored questions.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.model.ScoredQuestion</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>

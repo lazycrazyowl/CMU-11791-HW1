@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Sample Analusis Engine Descriptor for HW1
+-->
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+
+  <annotatorImplementationName>edu.cmu.lti.deiis.hw1.annotator.SampleAnnotator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>Sample Annotator for Sample Information Processing Pipeline</name>
+    <description>Detects Tokens, N-grams, Question, Answer, etc.</description>
+    <version/>
+    <vendor/>
+    <configurationParameters/>
+    <configurationParameterSettings/>
+    <typeSystemDescription>
+      <imports>
+        <import location="../../hw1-kmuruges-typesystem.xml"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+	<operationalProperties>
+		<modifiesCas>true</modifiesCas>
+		<multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+		<outputsNewCASes>false</outputsNewCASes>
+	</operationalProperties>
+  </analysisEngineMetaData>
+<resourceManagerConfiguration/>
+</analysisEngineDescription>

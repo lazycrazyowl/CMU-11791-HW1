@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	 Type Descriptor based on HW1 Sample Annotation requirement
+-->
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>hw1-kmuruges-typesystem</name>
+    <description>Type System Descriptor for HW1</description>
+		<version>1.0</version>
+		<vendor>Carnegie Mellon University</vendor>
+  <imports>
+    <import location="descriptors/type-system/TestElementTypeSystem.xml"/>
+    <import location="descriptors/type-system/TokenTypeSystem.xml"/>
+    <import location="descriptors/type-system/NGramTypeSystem.xml"/>
+  <import location="descriptors/type-system/ScoringTypeSystem.xml"/>
+  <import location="descriptors/type-system/EvaluationTypeSystem.xml"/>
+  </imports>
+</typeSystemDescription>

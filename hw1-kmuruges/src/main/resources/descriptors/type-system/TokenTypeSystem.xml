@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>TokenTypeSystem</name>
+    <description>Type System descriptor defined for the TokenAnnotation Step.</description>
+    <version>1.0</version>
+    <vendor>Carnegie Mellon University</vendor>
+  <imports>
+  <import location="BaseTypeSystem.xml"/>
+  </imports>
+  <types>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.tokenizer.SimpleToken</name>
+      <description>SimpleToken type can store a single token in a question/answer. Each SimpleToken type should not contain any whitespaces, punctuations or new line characters.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.BaseAnnotation</supertypeName>
+    <features>
+        <featureDescription>
+          <name>tokenString</name>
+          <description>token string at the specified index set (beginInd,endInd).</description>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.tokenizer.TokenizedAnswer</name>
+      <description>the tokenized answer sentence.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Answer</supertypeName>
+      <features>
+      	<featureDescription>
+          <name>answerTokens</name>
+          <description>array of tokens for an answer sentence.</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.tokenizer.TokenizedQuestion</name>
+      <description>TokenizedQuestion type that contains the tokens of the question sentence.</description>
+      <supertypeName>edu.cmu.lti.deiis.hw1.type.domain.Question</supertypeName>
+      <features>
+      	<featureDescription>
+          <name>questionTokens</name>
+          <description>array of tokens for a question sentence.</description>
+          <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+        </featureDescription>
+        <featureDescription>
+          <name>tokenizedAnswerList</name>
+          <description>Contains a list of TokenizedAnswer type objects. The FSList super type is used to maintain the order of the TokenizedAnswer. This order can be used for the Evaluation phase where we will compare the TokenizedAnswer:isCorrect with  empirical result or we can use the TokenizedAnswer:id attribute to match. Later method requires O(n) worst case time to get the answer for a given TokenizedAnswer:id.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.TokenizedAnswer</elementType>
+        </featureDescription>
+        </features>
+    </typeDescription>
+  <typeDescription>
+      <name>edu.cmu.lti.deiis.hw1.type.tokenizer.TokenizedQAEntityList</name>
+      <description>a list of Tokenized Question Answers.</description>
+      <supertypeName>uima.cas.TOP</supertypeName>
+      <features>
+        <featureDescription>
+          <name>tokenizedQuestions</name>
+          <description>a list of TokenizedQuestion objects. Note that each TokenizedQuestion object has zero or more TokenizedAnswer objects.</description>
+          <rangeTypeName>uima.cas.FSList</rangeTypeName>
+          <elementType>edu.cmu.lti.deiis.hw1.type.TokenizedQuestion</elementType>
+        </featureDescription>
+      </features>
+    </typeDescription>
+  </types>
+</typeSystemDescription>
